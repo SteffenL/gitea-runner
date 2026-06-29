@@ -78,6 +78,9 @@ func Execute(ctx context.Context) {
 	cacheCmd.Flags().Uint16VarP(&cacheArgs.Port, "port", "p", 0, "Port of the cache server")
 	rootCmd.AddCommand(cacheCmd)
 
+	// ./gitea-runner run-task
+	rootCmd.AddCommand(loadRunTaskCmd(ctx, &configFile))
+
 	// hide completion command
 	rootCmd.CompletionOptions.HiddenDefaultCmd = true
 
